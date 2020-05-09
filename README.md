@@ -7,6 +7,14 @@ Perl WebAssembly command line tool
 ```
 % plasm run program.wasm [ arguments ]
 % plasm dump program.wasm
+% plasm --help
+% plasm --version
+```
+
+For full documentation:
+
+```
+% perldoc plasm
 ```
 
 # DESCRIPTION

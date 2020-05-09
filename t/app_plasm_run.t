@@ -1,11 +1,15 @@
 use Test2::V0 -no_srand => 1;
-use App::plasm;
-use Capture::Tiny qw( capture );
+use lib 't/lib';
+use Run;
 
 is(
-  [capture { App::plasm::run::main("corpus/hello.wasm") }],
-  [ "hello world!\n", "", 0 ],
-  'run Simple hello world',
+  Run->run('run', 'corpus/hello.wasm'),
+  object {
+    call out => "hello world!\n";
+    call err => '';
+    call ret => 0;
+  },
+  '% plasm run corpus/hello.wasm',
 );
 
 done_testing;

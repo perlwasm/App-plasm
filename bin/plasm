@@ -13,6 +13,12 @@ use App::plasm;
 
  % plasm run program.wasm [ arguments ]
  % plasm dump program.wasm
+ % plasm --help
+ % plasm --version
+
+For full documentation:
+
+ % perldoc plasm
 
 =head1 DESCRIPTION
 

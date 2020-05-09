@@ -1,21 +1,25 @@
 use Test2::V0 -no_srand => 1;
-use App::plasm;
-use Capture::Tiny qw( capture );
-
-my @res;
+use lib 't/lib';
+use Run;
 
 is(
-  [@res = capture { App::plasm::dump::main("corpus/empty.wat") }],
-  [ "(module)\n", "", 0 ],
-  'dump empty module',
+  Run->run('dump', 'corpus/empty.wat'),
+  object {
+    call out => "(module)\n";
+    call err => '';
+    call ret => 0;
+  },
+  '% plasm dump corpus/empty.wat',
 );
 
 is(
-  [@res = capture { App::plasm::dump::main("corpus/callback.wat") }],
-  [ match qr/^\(module.*\)$/s, "", 0 ],
-  'dump empty module',
+  Run->run('dump', 'corpus/callback.wat'),
+  object {
+    call out => match qr/^\(module.*\)$/s;
+    call err => '';
+    call ret => 0;
+  },
+  '% plasm dump corpus/callback.wat',
 );
-
-note "[output]\n$res[0]";
 
 done_testing;

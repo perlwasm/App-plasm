@@ -12,7 +12,9 @@ my $post_diag;
 $modules{$_} = $_ for qw(
   Capture::Tiny
   ExtUtils::MakeMaker
+  Test2::API
   Test2::V0
+  Test::Exit
   Test::Script
   Wasm
   Wasm::Wasmtime

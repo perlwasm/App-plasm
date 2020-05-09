@@ -3,6 +3,8 @@ package App::plasm;
 use strict;
 use warnings;
 use 5.008001;
+use Pod::Usage qw( pod2usage );
+use Getopt::Long qw( GetOptions );
 
 # ABSTRACT: Perl WebAssembly command line tool
 # VERSION
@@ -36,14 +38,23 @@ sub main
 
   if(defined $_[0] && $_[0] !~ /^-/)
   {
-    my $class = 'App::plasm::' . shift();
+    my $cmd   = shift;
+    my $class = "App::plasm::$cmd";
     my $main  = $class->can('main');
-    die 'todo: usage' unless defined $main;
+    pod2usage({
+      -message => "no subcommand '$cmd'",
+      -exitval => 2,
+    }) unless defined $main;
     return $main->(@_);
   }
   else
   {
-    die 'todo: usage';
+    local @ARGV = @_;
+    GetOptions(
+      'help|h'    => sub { pod2usage({ -exitval => 0 }) },
+      'version|v' => sub { print "plasm version @{[ App::plasm->VERSION || 'dev' ]} Wasm.pm @{[ Wasm->VERSION ]}\n"; exit 0 },
+    ) or pod2usage({ -exitval => 2 });
+    pod2usage({ -exitval => 2 });
   }
 }
 
