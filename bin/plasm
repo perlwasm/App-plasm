@@ -1,0 +1,46 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+use lib::findbin '../lib';  # dev-only
+use App::plasm;
+
+# PODNAME: plasm
+# ABSTRACT: Perl WebAssembly command line tool
+# VERSION
+
+=head1 SYNOPSIS
+
+ # TODO
+
+=head1 DESCRIPTION
+
+C<plasm> is the Perl WebAssembly command line tool.  It lets you:
+
+=over 4
+
+=item Run C<.wasm> programs that use Perl modules.
+
+=item Dump diagnostic information about C<.wasm> files
+
+=item Possibly more as it is needed!
+
+=back
+
+=head1 SEE ALSO
+
+=over 4
+
+=item L<Wasm>
+
+Write Perl extensions using Wasm!
+
+=item L<Wasm::Wasmtime>
+
+Low-level Wasmtime bindings for Perl.
+
+=back
+
+=cut
+
+exit App::plasm->main(@ARGV);
