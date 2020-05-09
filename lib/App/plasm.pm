@@ -111,14 +111,30 @@ sub main
 
 package App::plasm::dump;
 
+use Pod::Usage qw( pod2usage );
+use Getopt::Long qw( GetOptions );
 use Wasm::Wasmtime 0.08;
 
 sub main
 {
   local @ARGV = @_;
 
+  my @pod = (-verbose => 99, -sections => "SUBCOMMANDS/run");
+
+  GetOptions(
+    'help|h'    => sub { pod2usage({ -exitval => 0, @pod }) },
+  ) or pod2usage({ -exitval => 2, @pod });
+
   my $filename = shift @ARGV;
-  die 'todo: usgae' unless defined $filename;
+
+  pod2usage({ @pod,
+    -exitval  => 2,
+  }) unless defined $filename;
+
+  pod2usage({ @pod,
+    -message => "File not found: $filename",
+    -exitval  => 2,
+  }) unless -f $filename;
 
   my $module = Wasm::Wasmtime::Module->new(
     file => $filename,

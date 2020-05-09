@@ -37,6 +37,7 @@ C<program.wasm> are passed on to the WebAssembly program.
 =head2 dump
 
  % plasm dump program.wasm
+ % plasm dump --help
 
 Dumps the import and exports of the given WebAssembly module.
 
