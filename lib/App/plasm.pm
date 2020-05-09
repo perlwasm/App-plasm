@@ -49,7 +49,7 @@ sub main
 
 package App::plasm::run;
 
-use Wasm;
+use Wasm 0.08;
 
 my $sandbox;
 
@@ -75,7 +75,7 @@ sub main
 
 package App::plasm::dump;
 
-use Wasm::Wasmtime;
+use Wasm::Wasmtime 0.08;
 
 sub main
 {
