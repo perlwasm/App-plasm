@@ -32,11 +32,65 @@ command line tool.  For details on its use see L<plasm>.
 
 sub main
 {
-  my(undef, @ARGV) = @_;
+  my $class = shift;  # unused
+
+  if(defined $_[0] && $_[0] !~ /^-/)
+  {
+    my $class = 'App::plasm::' . shift();
+    my $main  = $class->can('main');
+    die 'todo: usage' unless defined $main;
+    return $main->(@_);
+  }
+  else
+  {
+    die 'todo: usage';
+  }
+}
+
+package App::plasm::run;
+
+use Wasm;
+
+my $sandbox;
+
+sub main
+{
+  local @ARGV = @_;
+
+  my $filename = shift @ARGV;
+  die 'todo: usgae' unless defined $filename;
+  my $class = "App::plasm::run::sandbox@{[ $sandbox++ ]}";
+
+  Wasm->import(
+    -api     => 0,
+    -package => $class,
+    -file    => $filename,
+  );
+
+  my $start = $class->can('_start');
+  $start->();
+
+  return 0;
+}
+
+package App::plasm::dump;
+
+use Wasm::Wasmtime;
+
+sub main
+{
+  local @ARGV = @_;
+
+  my $filename = shift @ARGV;
+  die 'todo: usgae' unless defined $filename;
+
+  my $module = Wasm::Wasmtime::Module->new(
+    file => $filename,
+  );
+
+  print $module->to_string;
 
   return 0;
 }
 
 1;
-
-
