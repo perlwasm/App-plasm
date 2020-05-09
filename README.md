@@ -5,16 +5,41 @@ Perl WebAssembly command line tool
 # SYNOPSIS
 
 ```
-# TODO
+% plasm run program.wasm [ arguments ]
+% plasm dump program.wasm
+% plasm --help
+% plasm --version
+```
+
+For full documentation:
+
+```
+% perldoc plasm
 ```
 
 # DESCRIPTION
 
-`plasm` is the Perl WebAssembly command line tool.  It lets you:
+`plasm` is the Perl WebAssembly command line tool.
 
-- Run `.wasm` programs that use Perl modules.
-- Dump diagnostic information about `.wasm` files
-- Possibly more as it is needed!
+# SUBCOMMANDS
+
+## run
+
+```
+% plasm run program.wasm [ arguments ]
+% plasm run --help
+```
+
+Runs the given WebAssembly program.  The arguments after
+`program.wasm` are passed on to the WebAssembly program.
+
+## dump
+
+```
+% plasm dump program.wasm
+```
+
+Dumps the import and exports of the given WebAssembly module.
 
 # SEE ALSO
 
