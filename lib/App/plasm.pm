@@ -36,6 +36,8 @@ sub main
 {
   my $class = shift;  # unused
 
+  Getopt::Long::Configure('permute');
+
   if(defined $_[0] && $_[0] !~ /^-/)
   {
     my $cmd   = shift;
@@ -60,6 +62,8 @@ sub main
 
 package App::plasm::run;
 
+use Pod::Usage qw( pod2usage );
+use Getopt::Long qw( GetOptions );
 use Wasm 0.08;
 
 my $sandbox;
@@ -68,9 +72,28 @@ sub main
 {
   local @ARGV = @_;
 
+  Getopt::Long::Configure('require_order');
+
+  my @pod = (-verbose => 99, -sections => "SUBCOMMANDS/run");
+
+  GetOptions(
+    'help|h'    => sub { pod2usage({ -exitval => 0, @pod }) },
+  ) or pod2usage({ -exitval => 2, @pod });
+
   my $filename = shift @ARGV;
-  die 'todo: usgae' unless defined $filename;
+
+  pod2usage({ @pod,
+    -exitval  => 2,
+  }) unless defined $filename;
+
+  pod2usage({ @pod,
+    -message => "File not found: $filename",
+    -exitval  => 2,
+  }) unless -f $filename;
+
   my $class = "App::plasm::run::sandbox@{[ $sandbox++ ]}";
+
+  local $0 = $filename;
 
   Wasm->import(
     -api     => 0,
@@ -80,6 +103,8 @@ sub main
 
   my $start = $class->can('_start');
   $start->();
+
+  # TODO: detect exit value and pass that on...
 
   return 0;
 }

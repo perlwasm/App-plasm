@@ -27,6 +27,7 @@ For full documentation:
 
 ```
 % plasm run program.wasm [ arguments ]
+% plasm run --help
 ```
 
 Runs the given WebAssembly program.  The arguments after

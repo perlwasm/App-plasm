@@ -29,6 +29,7 @@ C<plasm> is the Perl WebAssembly command line tool.
 =head2 run
 
  % plasm run program.wasm [ arguments ]
+ % plasm run --help
 
 Runs the given WebAssembly program.  The arguments after
 C<program.wasm> are passed on to the WebAssembly program.
