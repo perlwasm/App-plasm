@@ -37,6 +37,7 @@ Runs the given WebAssembly program.  The arguments after
 
 ```
 % plasm dump program.wasm
+% plasm dump --help
 ```
 
 Dumps the import and exports of the given WebAssembly module.
