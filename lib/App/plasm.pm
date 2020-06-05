@@ -70,6 +70,7 @@ package App::plasm::run;
 use Pod::Usage qw( pod2usage );
 use Getopt::Long qw( GetOptions );
 use Wasm 0.08;
+use Wasm::Hook;
 
 my $sandbox;
 
