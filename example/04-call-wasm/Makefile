@@ -1,6 +1,6 @@
 CC=wacc
 CFLAGS=-Wl,--allow-undefined
-CDLFLAGS=-Wl,--no-entry -Wl,--export-dynamic -Wl
+CDLFLAGS=-Wl,--no-entry -Wl,--export-dynamic
 RM=rm -f
 PERL=perl
 PLASM=../../bin/plasm
