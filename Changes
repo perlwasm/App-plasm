@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}},
 
 {{$NEXT}}
+  - The default branch for the git repository is now
+    `main`.
 
 0.01      2020-05-10 16:02:50 -0600
   - initial version
