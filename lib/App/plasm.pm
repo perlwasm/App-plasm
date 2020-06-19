@@ -38,6 +38,11 @@ sub main
 
   Getopt::Long::Configure('permute');
 
+  if(defined $_[0] && $_[0] =~ /\.wasm$/)
+  {
+    unshift @_, 'run';
+  }
+
   if(defined $_[0] && $_[0] !~ /^-/)
   {
     my $cmd   = shift;
@@ -65,6 +70,7 @@ package App::plasm::run;
 use Pod::Usage qw( pod2usage );
 use Getopt::Long qw( GetOptions );
 use Wasm 0.08;
+use Wasm::Hook;
 
 my $sandbox;
 
