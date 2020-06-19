@@ -42,6 +42,16 @@ Runs the given WebAssembly program.  The arguments after
 
 Dumps the import and exports of the given WebAssembly module.
 
+## wat
+
+```
+% plasm wat program.wat
+% plasm wat --help
+```
+
+Converts WebAssembly Text (.wat) to WebAssembly Binary (.wasm)
+using wasmtime's `wat2wasm` function.
+
 # SEE ALSO
 
 - [Wasm](https://metacpan.org/pod/Wasm)
