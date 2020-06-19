@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}},
 
 {{$NEXT}}
+  - Added `wat` subcommand for converting WebAssembly Text
+    (.wat) to WebAssembly Binary (.wasm) (gh#3)
   - The default branch for the git repository is now
     `main`.
 
