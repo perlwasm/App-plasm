@@ -41,6 +41,14 @@ C<program.wasm> are passed on to the WebAssembly program.
 
 Dumps the import and exports of the given WebAssembly module.
 
+=head2 wat
+
+ % plasm wat program.wat
+ % plasm wat --help
+
+Converts WebAssembly Text (.wat) to WebAssembly Binary (.wasm)
+using wasmtime's C<wat2wasm> function.
+
 =head1 SEE ALSO
 
 =over 4
