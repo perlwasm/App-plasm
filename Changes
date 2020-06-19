@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}},
 
 {{$NEXT}}
+
+0.02      2020-06-19 13:21:13 -0600
   - Added `wat` subcommand for converting WebAssembly Text
     (.wat) to WebAssembly Binary (.wasm) (gh#3)
   - The default branch for the git repository is now
