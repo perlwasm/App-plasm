@@ -1,4 +1,4 @@
-# plasm [![Build Status](https://travis-ci.org/perlwasm/App-plasm.svg)](http://travis-ci.org/perlwasm/App-plasm)
+# plasm ![linux](https://github.com/perlwasm/App-plasm/workflows/linux/badge.svg)
 
 Perl WebAssembly command line tool
 
