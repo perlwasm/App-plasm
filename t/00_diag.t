@@ -14,8 +14,8 @@ $modules{$_} = $_ for qw(
   ExtUtils::MakeMaker
   Path::Tiny
   Test2::API
+  Test2::Tools::Process
   Test2::V0
-  Test::Exit
   Test::Script
   Wasm
   Wasm::Hook

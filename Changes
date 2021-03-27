@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}},
 
 {{$NEXT}}
+  - Migrate test dependency from Test::Exit to Test2::Tools::Process (gh#8)
 
 0.02      2020-06-19 13:21:13 -0600
   - Added `wat` subcommand for converting WebAssembly Text

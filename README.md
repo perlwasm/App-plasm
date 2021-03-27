@@ -1,4 +1,4 @@
-# plasm ![linux](https://github.com/perlwasm/App-plasm/workflows/linux/badge.svg) ![macos](https://github.com/perlwasm/App-plasm/workflows/macos/badge.svg) ![windows](https://github.com/perlwasm/App-plasm/workflows/windows/badge.svg) ![cygwin](https://github.com/perlwasm/App-plasm/workflows/cygwin/badge.svg) ![msys2-mingw](https://github.com/perlwasm/App-plasm/workflows/msys2-mingw/badge.svg)
+# plasm ![linux](https://github.com/perlwasm/App-plasm/workflows/linux/badge.svg) ![macos](https://github.com/perlwasm/App-plasm/workflows/macos/badge.svg) ![windows](https://github.com/perlwasm/App-plasm/workflows/windows/badge.svg)
 
 Perl WebAssembly command line tool
 
