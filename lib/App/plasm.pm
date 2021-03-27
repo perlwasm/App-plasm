@@ -2,7 +2,7 @@ package App::plasm;
 
 use strict;
 use warnings;
-use 5.008001;
+use 5.010;
 use Pod::Usage qw( pod2usage );
 use Getopt::Long qw( GetOptions );
 
