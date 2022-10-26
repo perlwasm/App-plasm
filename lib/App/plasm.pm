@@ -1,10 +1,10 @@
 package App::plasm;
 
-use strict;
 use warnings;
-use 5.010;
+use 5.020;
+use experimental qw( signatures postderef );
 use Pod::Usage qw( pod2usage );
-use Getopt::Long qw( GetOptions );
+use Getopt::Long qw( GetOptionsFromArray );
 
 # ABSTRACT: Perl WebAssembly command line tool
 # VERSION
@@ -57,7 +57,8 @@ sub main
   else
   {
     local @ARGV = @_;
-    GetOptions(
+    GetOptionsFromArray(
+      \@ARGV,
       'help|h'    => sub { pod2usage({ -exitval => 0 }) },
       'version|v' => sub { print "plasm version @{[ App::plasm->VERSION || 'dev' ]} Wasm.pm @{[ Wasm->VERSION ]}\n"; exit 0 },
     ) or pod2usage({ -exitval => 2 });
@@ -68,21 +69,22 @@ sub main
 package App::plasm::run;
 
 use Pod::Usage qw( pod2usage );
-use Getopt::Long qw( GetOptions );
+use Getopt::Long qw( GetOptionsFromArray );
 use Wasm 0.08;
 use Wasm::Hook;
 
 my $sandbox;
 
-sub main
+sub main (@argv)
 {
-  local @ARGV = @_;
-
+  # TODO: Wasm.pm should have a way to set the @ARGV?
+  local @ARGV = @argv;
   Getopt::Long::Configure('require_order');
 
   my @pod = (-verbose => 99, -sections => "SUBCOMMANDS/run");
 
-  GetOptions(
+  GetOptionsFromArray(
+    \@ARGV,
     'help|h'    => sub { pod2usage({ -exitval => 0, @pod }) },
   ) or pod2usage({ -exitval => 2, @pod });
 
@@ -118,16 +120,15 @@ sub main
 package App::plasm::dump;
 
 use Pod::Usage qw( pod2usage );
-use Getopt::Long qw( GetOptions );
+use Getopt::Long qw( GetOptionsFromArray );
 use Wasm::Wasmtime 0.08;
 
-sub main
+sub main (@ARGV)
 {
-  local @ARGV = @_;
-
   my @pod = (-verbose => 99, -sections => "SUBCOMMANDS/run");
 
-  GetOptions(
+  GetOptionsFromArray(
+    \@ARGV,
     'help|h'    => sub { pod2usage({ -exitval => 0, @pod }) },
   ) or pod2usage({ -exitval => 2, @pod });
 
@@ -154,17 +155,16 @@ sub main
 package App::plasm::wat;
 
 use Pod::Usage qw( pod2usage );
-use Getopt::Long qw( GetOptions );
+use Getopt::Long qw( GetOptionsFromArray );
 use Wasm::Wasmtime::Wat2Wasm qw( wat2wasm );
 use Path::Tiny qw( path );
 
-sub main
+sub main (@ARGV)
 {
-  local @ARGV = @_;
-
   my @pod = (-verbose => 99, -sections => "SUBCOMMANDS/wat");
 
-  GetOptions(
+  GetOptionsFromArray(
+    \@ARGV,
     'help|h'    => sub { pod2usage({ -exitval => 0, @pod }) },
   ) or pod2usage({ -exitval => 2, @pod });
 
