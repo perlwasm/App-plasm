@@ -2,4 +2,7 @@ App-plasm-*
 /.build/
 *.swp
 
-
+/App-plasm-*
+/.build
+*.old
+*.orig
